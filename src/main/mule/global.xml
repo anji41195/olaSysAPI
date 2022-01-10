@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core" xmlns:file="http://www.mulesoft.org/schema/mule/file"
+	xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/file http://www.mulesoft.org/schema/mule/file/current/mule-file.xsd
+http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd">
+	<file:config name="Ola_File_Config" doc:name="File Config" doc:id="dea9bd29-6511-46f7-bb93-82cebf7db155" >
+		<file:connection workingDir="C:\Users\anjalivchavan\AnypointStudio\studio-workspace\bookmyholiday-ola-sys-api\src\test\resources" />
+	</file:config>
+	<configuration doc:name="Configuration" doc:id="60f446fe-5200-4f9e-8557-4df79928f9e7" defaultErrorHandler-ref="globalError_Handler" />
+	<error-handler name="globalError_Handler" doc:id="daf7c378-4e12-453c-a39c-67f66c79f3b3" >
+		<on-error-propagate enableNotifications="true" logException="true" doc:name="On Error Propagate" doc:id="38fdd34c-58f3-4f1b-b18b-b797f9b3dc0f" type="FILE:ACCESS_DENIED">
+			<set-payload value="You are unauthorized to connect File System" doc:name="Set Payload" doc:id="4225a9c7-331a-4558-87b5-280115c6f6bb" />
+		</on-error-propagate>
+		<on-error-propagate enableNotifications="true" logException="true" doc:name="On Error Propagate" doc:id="506d0c24-0a07-443a-8bd4-b9a8bf150cd8" type="FILE:CONNECTIVITY">
+			<set-payload value="Failed to connect File System" doc:name="Set Payload" doc:id="00536122-d654-410b-bffd-96fb6fe08824" />
+		</on-error-propagate>
+		<on-error-propagate enableNotifications="true" logException="true" doc:name="On Error Propagate" doc:id="1c585f3b-d662-4b7b-9132-63cb7501316a" type="FILE:ILLEGAL_PATH">
+			<set-payload value="Specified path does not exist" doc:name="Set Payload" doc:id="cdef89ec-2727-44e7-bea1-9b25263f20f8" />
+		</on-error-propagate>
+		<on-error-propagate enableNotifications="true" logException="true" doc:name="On Error Propagate" doc:id="09cfc00a-77e6-4027-a377-ad6d8fee6efa" type="ANY">
+			<ee:transform doc:name="Transform Message" doc:id="40192cda-2c71-4b98-ab0f-ae10aeecb3e1" >
+				<ee:message >
+					<ee:set-payload ><![CDATA[%dw 2.0
+output application/json
+---
+{
+	'message':error.description
+}]]></ee:set-payload>
+				</ee:message>
+			</ee:transform>
+		</on-error-propagate>
+	</error-handler>
+</mule>

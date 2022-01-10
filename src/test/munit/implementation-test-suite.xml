@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:munit="http://www.mulesoft.org/schema/mule/munit" xmlns:munit-tools="http://www.mulesoft.org/schema/mule/munit-tools"
+	xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xsi:schemaLocation="
+		http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+		http://www.mulesoft.org/schema/mule/munit http://www.mulesoft.org/schema/mule/munit/current/mule-munit.xsd
+		http://www.mulesoft.org/schema/mule/munit-tools  http://www.mulesoft.org/schema/mule/munit-tools/current/mule-munit-tools.xsd">
+	<munit:config name="implementation-test-suite.xml" />
+	<munit:test name="implementation-test-suite-getOlaCarsAvailabilityDetailsTest" doc:id="01d88e6d-48d1-44e9-9d68-fea2093b0ca9" description="Test">
+		<munit:execution >
+			<flow-ref doc:name="Flow-ref to getOlaCarsAvailabilityDetails" doc:id="258aeb90-4500-43e0-b0c0-b64fab7a6e8b" name="getOlaCarsAvailabilityDetails"/>
+		</munit:execution>
+	</munit:test>
+	<munit:test name="implementation-test-suite-postOlaCarBookingDetailsTest" doc:id="77c3efab-5502-4997-9b3e-b131bd7c8f2d" description="Test">
+		<munit:execution >
+			<flow-ref doc:name="Flow-ref to postOlaCarBookingDetails" doc:id="bec87d1d-e91b-4f6c-bc80-788c3d38bba3" name="postOlaCarBookingDetails"/>
+		</munit:execution>
+	</munit:test>
+
+
+</mule>

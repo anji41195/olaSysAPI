@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:ee="http://www.mulesoft.org/schema/mule/ee/core" xmlns:file="http://www.mulesoft.org/schema/mule/file"
+	xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/file http://www.mulesoft.org/schema/mule/file/current/mule-file.xsd
+http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/ee/core/current/mule-ee.xsd">
+	<flow name="getOlaCarsAvailabilityDetails" doc:id="63aec4a1-8629-4663-a3cb-0f9a6a20b0aa" >
+		<file:read doc:id="28ed2024-9afe-4343-928a-01645d237c82" config-ref="Ola_File_Config" path="CarsAvailable/olaCarsAvailable.csv" doc:name="GetTheCarsAvailableFromOla" />
+		<ee:transform doc:name="Copy_of_Transform CSV Data to JSON" doc:id="7fb97031-d3c5-4aa4-bac4-96f7a2017fbc" >
+			<ee:message >
+				<ee:set-payload ><![CDATA[%dw 2.0
+output application/json
+---
+payload]]></ee:set-payload>
+			</ee:message>
+		</ee:transform>
+	</flow>
+	<flow name="postOlaCarBookingDetails" doc:id="a3d9bd48-d088-426a-bcab-bbc86e685216" >
+		<ee:transform doc:name="Transform the JSON Payload to CSV" doc:id="f31c3eaf-ce56-4e70-8b12-071fba345a50" >
+			<ee:message >
+				<ee:set-payload ><![CDATA[%dw 2.0
+output application/csv
+---
+payload]]></ee:set-payload>
+			</ee:message>
+		</ee:transform>
+		<file:write doc:name="WriteTheOlaCarBookingDetailsToACSVFile" doc:id="47cdbfe3-3e16-4092-9ccb-69a0f07cb90a" config-ref="Ola_File_Config" path="CarsBookings/olaCarBookings.csv" mode="APPEND" />
+	</flow>
+</mule>

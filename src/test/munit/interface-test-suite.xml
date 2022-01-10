@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:munit="http://www.mulesoft.org/schema/mule/munit" xmlns:munit-tools="http://www.mulesoft.org/schema/mule/munit-tools"
+	xmlns="http://www.mulesoft.org/schema/mule/core" xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xsi:schemaLocation="
+		http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+		http://www.mulesoft.org/schema/mule/munit http://www.mulesoft.org/schema/mule/munit/current/mule-munit.xsd
+		http://www.mulesoft.org/schema/mule/munit-tools  http://www.mulesoft.org/schema/mule/munit-tools/current/mule-munit-tools.xsd">
+	<munit:config name="interface-test-suite.xml" />
+	<munit:test name="interface-test-suite-get:\ola:bookmyholiday-ola-sys-api-configTest" doc:id="f4766c5e-1ebe-40d2-950d-7cfc43e052ab" description="Test">
+		<munit:execution >
+			<flow-ref doc:name="Flow-ref to get:\ola:bookmyholiday-ola-sys-api-config" doc:id="f142a993-793c-46e9-ad1a-1f246ad412f8" name="get:\ola:bookmyholiday-ola-sys-api-config"/>
+		</munit:execution>
+	</munit:test>
+	<munit:test name="interface-test-suite-post:\ola:application\json:bookmyholiday-ola-sys-api-configTest" doc:id="4f310192-df56-4adc-ba04-e46ba5e34939" description="Test">
+		<munit:execution >
+			<flow-ref doc:name="Flow-ref to post:\ola:application\json:bookmyholiday-ola-sys-api-config" doc:id="44323417-17c9-4d48-aa36-b2769239d0c4" name="post:\ola:application\json:bookmyholiday-ola-sys-api-config"/>
+		</munit:execution>
+	</munit:test>
+	<munit:test name="interface-test-suite-bookmyholiday-ola-sys-api-mainTest" doc:id="3f70f454-853f-4b87-a2cb-0b6d42364869" description="Test">
+		<munit:execution >
+			<flow-ref doc:name="Flow-ref to bookmyholiday-ola-sys-api-main" doc:id="5652815f-7f65-4343-ba04-ccc810ccfab7" name="bookmyholiday-ola-sys-api-main"/>
+		</munit:execution>
+	</munit:test>
+
+
+</mule>
