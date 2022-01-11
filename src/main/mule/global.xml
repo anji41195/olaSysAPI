@@ -9,6 +9,7 @@ http://www.mulesoft.org/schema/mule/ee/core http://www.mulesoft.org/schema/mule/
 		<file:connection workingDir="C:\Users\anjalivchavan\AnypointStudio\studio-workspace\bookmyholiday-ola-sys-api\src\test\resources" />
 	</file:config>
 	<configuration doc:name="Configuration" doc:id="60f446fe-5200-4f9e-8557-4df79928f9e7" defaultErrorHandler-ref="globalError_Handler" />
+	<configuration-properties doc:name="Configuration properties" doc:id="aabcbd07-decf-4ee7-9a26-34f4d036a059" file="config.yaml" />
 	<error-handler name="globalError_Handler" doc:id="daf7c378-4e12-453c-a39c-67f66c79f3b3" >
 		<on-error-propagate enableNotifications="true" logException="true" doc:name="On Error Propagate" doc:id="38fdd34c-58f3-4f1b-b18b-b797f9b3dc0f" type="FILE:ACCESS_DENIED">
 			<set-payload value="You are unauthorized to connect File System" doc:name="Set Payload" doc:id="4225a9c7-331a-4558-87b5-280115c6f6bb" />
